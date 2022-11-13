@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+IMAGE_NAME=easycrypt
+IMAGE_URL=agustinmista/easycrypt
+
+# Load the image into Docker when necessary
+if [[ "$(docker images -q $IMAGE_NAME 2> /dev/null)" == "" ]]; then
+  echo "Pulling image $IMAGE_URL from DockerHub ..."
+  exit
+else
+  echo "Image $IMAGE_NAME is already loaded into Docker"
+fi
+
+# Start the container
+echo "Starting container $IMAGE_NAME ..."
+docker run \
+  --name $IMAGE_NAME \
+  -it \
+  --rm \
+  -v $PWD:/home/easycrypt/workdir/ \
+  $IMAGE_NAME $@

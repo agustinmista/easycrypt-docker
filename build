@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+IMAGE_NAME=easycrypt
+
+# Build docker image
+echo "========================="
+echo "Building $IMAGE_NAME Docker image ..."
+docker build \
+  --rm \
+  -f Dockerfile \
+  -t $IMAGE_NAME \
+  --build-arg UID=$(id -u) \
+  --build-arg GID=$(id -g) \
+  . \
+  --progress=plain > $IMAGE_NAME.log 2>&1
+
+echo "Built Docker image:"
+docker images --filter reference=$IMAGE_NAME
