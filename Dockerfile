@@ -88,8 +88,10 @@ RUN easycrypt check-install.ec
 RUN emacs --script .emacs
 
 # ----------------------------------------
-# Change the working directory and the entry point to emacs
+# Change the working directory and the entry point to emacs with better color support
 
 WORKDIR /home/$USER_NAME/workdir
+
+ENV TERM=xterm-256color
 
 ENTRYPOINT ["/usr/bin/emacs"]
