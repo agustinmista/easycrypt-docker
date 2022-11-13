@@ -1,6 +1,6 @@
 # easycrypt-docker
 
-A Docker image with EasyCrypt, Z3, Alt-Ergo, and Emacs/Proof-General preinstalled :D
+A Docker image with EasyCrypt, Z3, Alt-Ergo, and Emacs with Proof-General and evil-mode preinstalled :D
 
 ## Usage
 
