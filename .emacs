@@ -6,7 +6,10 @@
   ("melpa" . "https://melpa.org/packages/")))
 
 ; list the packages you want
-(setq package-list '(proof-general evil))
+(setq package-list '(
+  proof-general
+  which-key
+  evil))
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
@@ -35,6 +38,9 @@
 
 ; set the default theme
 (load-theme 'tango-dark t)
+
+; enable which-key mode
+(which-key-mode 1)
 
 ; join the dark side
 (evil-mode 1)
