@@ -16,8 +16,17 @@ Please note that this binds your current $PWD into the container, so you can edi
 
 For convenience, you might want to create an alias:
 
+### Linux
+
 ```
 $ alias easycrypt='docker run --rm -it -v $PWD:/home/easycrypt/workdir agustinmista/easycrypt'
+```
+
+### Windows (PowerShell)
+
+```
+PS C:\> function Docker-Run-EasyCrypt { docker run --rm -it -v ${PWD}:/home/easycrypt/workdir agustinmista/easycrypt $args }
+PS C:\> Set-Alias -Name easycrypt -Value Docker-Run-EasyCrypt
 ```
 
 So editing files simply becomes:
