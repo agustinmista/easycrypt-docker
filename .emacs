@@ -20,11 +20,21 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-; join the dark side
-(evil-mode 1)
+; use short questions instead of yes-or-no ones
+(fset 'yes-or-no-p 'y-or-n-p)
+
+; disable Emacs splash screen and startup echo message
+(setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message t)
+
+; disable Proof General's splash screen
+(setq proof-splash-enable nil)
+
+; remove annoying =>
+(setq overlay-arrow-string "")
 
 ; set the default theme
 (load-theme 'tango-dark t)
 
-; remove annoying =>
-(setq overlay-arrow-string "")
+; join the dark side
+(evil-mode 1)
