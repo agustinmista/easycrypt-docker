@@ -4,6 +4,11 @@ A Docker image with EasyCrypt, Z3, Alt-Ergo, and Emacs with Proof-General and ev
 
 ## Usage
 
+Make sure to build the image first, using
+```
+$ ./build.sh
+```
+
 To run the image directly:
 
 ```
@@ -12,6 +17,19 @@ $ docker run --rm -it -v ${PWD}:/home/easycrypt/workdir agustinmista/easycrypt
 
 Which should open Emacs in terminal mode. Note that this also binds your current $PWD into the container, so you can edit files from your host by passing them as arguments to the container.
 
+You can also run it with
+
+```
+$ ./command.sh
+```
+
+Which will start a shell in the workdir. Note that `command.sh` leaves the
+container running after use and doesn't delete it, meaning you can e.g.
+edit the Doom config and keep it around. Just make sure to stop the container
+after use!
+
+If you want to customize doom before installing, you can change the configs
+in `doom-config/`.
 
 ### Creating an alias
 
