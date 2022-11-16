@@ -72,24 +72,20 @@ RUN eval $(opam env) && \
 RUN easycrypt why3config
 
 # ----------------------------------------
-# Copy some necessary files
+# Copy the sanity check file and test that EasyCrypt is working as expected
 
 COPY --chown=$USER_NAME:$USER_NAME check-install.ec check-install.ec
+RUN easycrypt check-install.ec
 
 # ----------------------------------------
-# Ensure that everything works
-
-RUN easycrypt check-install.ec
+# Configure Doom Emacs with Proof General
 
 RUN mkdir /home/$USER_NAME/.doom.d
 COPY --chown=$USER_NAME:$USER_NAME doom-config/packages.el /home/$USER_NAME/.doom.d/packages.el
-COPY --chown=$USER_NAME:$USER_NAME doom-config/init.el /home/$USER_NAME/.doom.d/init.el
-COPY --chown=$USER_NAME:$USER_NAME doom-config/config.el /home/$USER_NAME/.doom.d/config.el
+COPY --chown=$USER_NAME:$USER_NAME doom-config/init.el     /home/$USER_NAME/.doom.d/init.el
+COPY --chown=$USER_NAME:$USER_NAME doom-config/config.el   /home/$USER_NAME/.doom.d/config.el
+
 RUN git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-
-# ----------------------------------------
-# Configure Emacs with Proof General and Evil mode
-
 RUN yes | ~/.emacs.d/bin/doom install
 
 # ----------------------------------------

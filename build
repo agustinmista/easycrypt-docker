@@ -2,7 +2,7 @@
 
 set -e
 
-IMAGE_NAME=easycrypt
+IMAGE_NAME=agustinmista/easycrypt
 
 # Build docker image
 echo "========================="
@@ -14,7 +14,7 @@ docker build \
   --build-arg UID=$(id -u) \
   --build-arg GID=$(id -g) \
   . \
-  --progress=plain > $IMAGE_NAME.log 2>&1
+  --progress=plain
 
 echo "Built Docker image:"
 docker images --filter reference=$IMAGE_NAME

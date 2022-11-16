@@ -75,8 +75,14 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Disable Proof General's splash screen
 (setq proof-splash-enable nil)
 
+;; Disable annoying underlined text
+(add-hook 'proof-mode-hook
+  (lambda () (set-face-underline 'proof-locked-face nil)))
+
+;; Skip some buffers
 (setq my-skippable-buffers '("*Messages*" "*scratch*" "*Help*"))
 
 (defun my-change-buffer (change-buffer)
